@@ -18,9 +18,23 @@ pUndershoot = 0.1  # Probability that it moves one step greater
 
 def sense(p, Z):
     '''
+    Sense the current location of the *robot*.
+
     Function to sense the current location of the robot.
     This is similar to `Baye's rule`, where we have a prior
     and calculate posterior based on the measurement
+
+    Parameters
+    ----------
+    p : list
+        This is list of prior probabilities.
+    Z : str
+        This is the measurement of the current cell by the robot.
+
+    Returns
+    -------
+    list
+        List of posterior probabilities.
     '''
     q=[]
     for i in range(len(p)):
@@ -34,11 +48,25 @@ def sense(p, Z):
 
 def move(p, U):
     '''
+    Move the *robot*.
+
     Function to move the robot with its inaccurate movement.
     This is similar to `Theorem of total probability`, where
     we calculate the probability of current cell based on
     convolution of prior and movement of robot from surrounding
     cells.
+
+    Parameters
+    ----------
+    p : list
+        This is list of prior probabilities.
+    U : int
+        This is movement robot has to go through.
+
+    Returns
+    -------
+    list
+        List of posterior probabilities.
     '''
     q = []
     for i in range(len(p)):
